@@ -1,12 +1,38 @@
+#########################################
+#
+# LARGE DATA AND R 
+# A COMPILATION OF EXAMPLES ON HOW TO USE CUSTOM FUNCTIONS
+# TO AVOID MEMORY PROBLEMS AND HAVE AN EFFICIENT CODE
+
 ######################################
 
-# source and directory :: 
-setwd("C:/Users/jkc261/Documents/Projects/Large_data_and_R") # change this directory for your computer.  
+######################################
+# This is a work in progress. 
+# Please contact me on miguelvb@yahoo.com to ask any question. 
+# this files are updated in 
+# www.github.com/miguelvb/large-data-R 
+# tutorial and R introduction in 
+# www.repidemiology.wordpress.com
+######################################
 
-source("P:/Scripts/R/functions_miguel.r") # this contains some functions needed .
-sourceCpp("P:/Projects/RLargeData/subset_df.cpp") # Rcpp functions.
+
+# source and directory :: 
+
+dirdata <- "C:/Users/jkc261/large-data-R" # YUO MUST CHANGE THIS DIRECTORY TO YOURS.... 
+
+setwd(dirdata) # change this directory for your computer.  
+filename.functions <- paste(dirdata,"functions_large_data.r",sep="/")
+filename.cpp <- paste(dirdata,"subset_df.cpp",sep="/")
+
+# you must have intalled all these packages : 
 
 require(Rcpp); require(data.table); require(ffbase); require(ggplot2); require(grid); require(inline); require(sqldf)
+
+# sourcing the files containing functions : 
+
+source(filename.functions) # this contains some functions needed .
+sourceCpp(filename.cpp) # Rcpp functions.
+
 
 
 # 1 . MOTIVATION 
@@ -112,8 +138,7 @@ my_memory <- 4000 # the total RAM memory of the computer (use another number for
 memory.limit(size=my_memory)  # put the limit to the computer RAM. This allows R to use all the memory avaiable. 
 memory.size() # show how much we are using
 
-# load ffbase :: 
-library(ffbase)
+# load ffbase ::
 
 # ffbase is working with data almost in the same way as R, but data are written into disk
 # and only some parts are loaded into memory to compute. Results are written again into disk. 
@@ -193,7 +218,7 @@ gc()
 
 # now let us save the data:: 
 
-setwd("C:/Users/jkc261/Documents/Projects/Large_data_and_R") # change this directory for your computer.  
+setwd(dirdata) # change this directory for your computer.  
 ffdfsave(df, filename="df")  # this is moving the data from the temporary directory to the one we point to. 
 
 str(df[1,])
@@ -209,8 +234,8 @@ str(df[1,])
 require(Rcpp)  # library to code C++ into R. 
 require(inline) # library to be able to load c++ functions into R code in the same R file. 
 
-source("P:/Scripts/R/functions_miguel.r") # this contains some functions needed .
-sourceCpp("P:/Projects/RLargeData/subset_df.cpp") # Rcpp functions. 
+source(filename.functions) # this contains some functions needed .
+sourceCpp(filename.cpp) # Rcpp functions. 
 
 # order the data by ident and dates: 
 
@@ -483,8 +508,8 @@ gc()
 require(Rcpp)  # library to code C++ into R. 
 require(inline) # library to be able to load c++ functions into R code in the same R file. 
 
-source("P:/Scripts/R/functions_miguel.r") # this contains some functions needed .
-sourceCpp("P:/Projects/RLargeData/subset_df.cpp") # Rcpp functions.
+source(filename.functions) # this contains some functions needed .
+sourceCpp(filename.cpp) # Rcpp functions.
 
 
 
@@ -880,16 +905,16 @@ res <- split_apply_cpp(res,res$x,chuk_size,fun.900000) # 20 seconds for 10 milli
 
 
 # example: 
-setwd("C:/Users/jkc261/Documents/Projects/Large_data_and_R")
+setwd(dirdata)
 data_redir <- ffdf( one = ff(1:10), two = ff(11:20))
 save.ffdf(data_redir, dir = "data_redir")  # OBS: saved data to a directory named SAME as the name of the database.
 
 # now suppose that we move manually (not using R) the files into the directory "P:/Projects/RLargeData/"
 # to ba able to work with the data again, we will do this: 
 
-setwd("P:/Projects/RLargeData/")  # change the directory. 
+setwd(dirdata.2)  # change the directory. 
 load.ffdf("data_redir")           # load the database
-data.p <- redir_ffdf(data, "P:/Projects/RLargeData")  # change the path names of the files to correct for the move. 
+data.p <- redir_ffdf(data, dirdata.2)  # change the path names of the files to correct for the move. 
 data.p  # now we can use it without access errors. 
 
 ################################################
@@ -908,14 +933,15 @@ data.p  # now we can use it without access errors.
 
 # example: 
 
-setwd("C:/Users/jkc261/Documents/Projects/Large_data_and_R")
+setwd(dirdata)
 data_r <- ffdf( one = ff(1:10), two = ff(11:20))
 ffdfsave(data_r, file = "data_r")   # saved data to a file named SAME as the name of the database.
 
 # now suppose that we move manually (not using R) the files into the directory "P:/Projects/RLargeData/"
 # to be able to work with the data again, we will do this: 
 
-dirP <- "P:/Projects/RLargeData"
+dirP <- " " # make yours ... 
+
 setwd(dirP)  # change the directory. 
 load("data_r")           # load the database
 data.p <- redir_ffdf_ffdfsave(data_r, dirP)  # change the path names of the files to correct for the move. 
@@ -1118,10 +1144,10 @@ rm(list = ls())
 gc()
 
 # source and directory :: 
-setwd("C:/Users/jkc261/Documents/Projects/Large_data_and_R") # change this directory for your computer.  
+setwd(dirdata) # change this directory for your computer.  
 
-source("P:/Scripts/R/functions_miguel.r") # this contains some functions needed .
-sourceCpp("P:/Projects/RLargeData/subset_df.cpp") # Rcpp functions.
+source(filename.functions) # this contains some functions needed .
+sourceCpp(filename.cpp) # Rcpp functions.
 
 require(Rcpp); require(data.table); require(ffbase); require(ggplot2); require(grid)
 
@@ -1329,7 +1355,7 @@ plot2 <- plot +
 
 plot2
   
-setwd("C:/Users/jkc261/Documents/Projects/Large_data_and_R") # change this directory for your computer.  
+setwd(dirdata) # change this directory for your computer.  
 ### saving to tiff :: 
 tiff(file = "speed.tif",width = 7, height = 5, units = "in", res = 500, compression="lzw")
 #pdf(file = "P:/HorizonData/Bar Plots/BarPlotsAptima.pdf",width = 10, height = 7.5)
@@ -1979,9 +2005,9 @@ plot2 <- plot +
 plot2
 
 
-#setwd("C:/Users/jkc261/Documents/Projects/Large_data_and_R") # change this directory for your computer.  
+#setwd(dirdata) # change this directory for your computer.  
 ### saving to tiff :: 
-tiff(file = "C:/Users/jkc261/Documents/Projects/Large_data_and_R/speed2.tif",width = 7, height = 5, units = "in", res = 500, compression="lzw")
+tiff(file = "speed2.tif",width = 7, height = 5, units = "in", res = 500, compression="lzw")
 #pdf(file = "P:/HorizonData/Bar Plots/BarPlotsAptima.pdf",width = 10, height = 7.5)
 plot2
 dev.off()
