@@ -180,7 +180,7 @@ filename(df) # where is it stored ???
 
 fdates <- ff(sample( 0:10000, Ndata, replace = T) + as.Date("1970-10-01"))
 df$date <- fdates  # here we assign that vector to df.... if we change fdates, we will change df$date. This is diff from R. 
-head(df)
+head(df[1,])
 
 # check classes :: 
 
