@@ -1,0 +1,12 @@
+Package: LargeData
+Title: Functions for Large Data Edition
+Description: functions for Large Data sets
+Version: 0.0.1
+Author: Miguel Vazquez-Prada  <miguel@yahoo.com>
+Maintainer: Miguel Vazquez-Prada <miguel@yahoo.com>
+Depends: R (>= 2.15.2), ffbase, data.table, Rcpp, LargeDataCppFunctions
+License: MIT
+LazyData: true
+Collate: 'functions.r'
+Packaged: 2013-09-16 11:17:49 UTC; jkc261
+Built: R 3.0.1; ; 2013-09-16 11:17:50 UTC; windows

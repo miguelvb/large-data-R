@@ -1,0 +1,16 @@
+{
+    "contents" : "\nlibrary(LargeData)\n\ncars\nx <- ff(1:2)\ndf <- as.ffdf(cars)\ndf[,]\ndf <- order\n\n\nres <- splitapplycpp(df, df$speed, mean)",
+    "created" : 1379328954211.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "708556662",
+    "id" : "4E2E5F5E",
+    "lastKnownWriteTime" : 578055781,
+    "path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

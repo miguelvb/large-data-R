@@ -117,11 +117,11 @@ changedanishletters <- function(y){
 #' 
 #' orderffdf will order the ffdf using a column 
 #' it will make the process using each time a portion of the total database 
+#' @export
 #' @param data : a ffdf data base.
 #' @param ordercols : vector of names of the columns to order the data 
 #' @param splits : number of splits to make while ordering. Will avoid memory problems. 
 #' @param verbose : if verbose the process. 
-#' @export
 
 orderffdf <- function(data, ordercols = names(data), splits = 1, verbose = F){
   require(ffbase)
@@ -570,31 +570,32 @@ getdatatablesplit <- function(data, chunkindexes, chuknumber){
 #'  @param splitvector : the ff vector to use for the splits. 
 #'  @param chksize : the number of rows to take in a single computing pass (RAM)
 #'  @param fu : a function that returns a data.frame over a data.frame (for a single value of the split vector)
+#'  @param verbose : will verbose the process 
 #'  @export
 ####################################################################
 
-splitapplycpp <- function(inputdata, splitvector, chksize , fu){
+splitapplycpp <- function(inputdata, splitvector, chksize , fu, verbose = T ){
   
-  require(ffbase); require(data.table)
+  require(ffbase); require(data.table); require(LargeDataCppFunctions)
   print(nrow(inputdata))
   t.begin <- Sys.time()
   
   data <- data.frame( ids = as.integer(splitvector[]) ) # create a data frame with one col which is the split factor as integer...
   
-  splitindexes  <- getsplitindexes(data, "ids") # a cpp function to get the indexes for the splits... 
+  splitindexes  <- getSplitIndexes(data, "ids") # a cpp function to get the indexes for the splits... 
   print(length(splitindexes))
   
   #the size for each chunk. Setting to 3e6 rows gets good results. No mem overflow.... lower if there are mem. alloc. problems... 
   chksize <- chksize
   if(chksize > nrow(inputdata)) chksize = nrow(inputdata); #print(chksize)
   
-  sp <- getchunksindexesforsplitlist(data, splitindexes, chksize) # cpp function that gives the row numbers for splits in indexes and in data.base.
+  sp <- getChunksIndexesForSplitList(data, splitindexes, chksize) # cpp function that gives the row numbers for splits in indexes and in data.base.
   rm(data) 
   data <- inputdata   
   ##print(sp[1:2,])
   Nsplits <- nrow(sp); 
   
-  print(paste("Number of Splits " , Nsplits, " / ", "Chunk Size",  chksize )) 
+  if(verbose) print(paste("Number of Splits " , Nsplits, " / ", "Chunk Size",  chksize )) 
   
   ########## first process :: using data.table to split ###############
   #we do not need the splitindexes data ::
@@ -602,26 +603,26 @@ splitapplycpp <- function(inputdata, splitvector, chksize , fu){
   
   ii <- 0 
   
-  print("Beginning Splits ------ " )
+  if(verbose) print("Beginning Splits ------ " )
   for ( i in 1:Nsplits){ 
     
-    print(paste("Split ", i, "/", Nsplits))
+    if(verbose) print(paste("Split ", i, "/", Nsplits))
     t.beg <- Sys.time()
-    print(gc())
+    if(verbose) print(gc())
     splitnumber <- i
-    beg <- sp[splitnumber, "begdataindex"]
-    end <- sp[splitnumber, "enddataindex"]
+    beg <- sp[splitnumber, "beg_data_index"]
+    end <- sp[splitnumber, "end_data_index"]
     
-    print(paste("---Working on rows  ", beg, "to ", end))
+    if(verbose) print(paste("---Working on rows  ", beg, "to ", end))
     
     dat <- data[beg:end, ] 
-    print(paste("------ function"))
+    if(verbose) print(paste("------ function"))
     ## dat <- getdatatablesplit(data,sp,splitnumber)  
     ## setkeyv(dat, c(splitname)) 
     
     res <- fu(dat)   ## fu(x) will be something like : {  x <- data.table(x) ; setkey(x, "ident") ; x[ , list( max.diagnose = max(dignose)), by = ident ] } for example.... 
     #print(nrow(res));
-    print(paste("------ append  "))
+    if(verbose) print(paste("------ append  "))
     
     cont <- TRUE 
     ii <- ii+1
@@ -635,8 +636,8 @@ splitapplycpp <- function(inputdata, splitvector, chksize , fu){
     rm(res) 
     rm(dat) 
     t.e <- Sys.time()
-    print(paste("------time elapsed in split ", i , "of", Nsplits, " = ", round(t.e - t.beg, digits = 1)))  
-    print(paste("------Estimated total time ",  Nsplits * round(t.e - t.beg, digits = 1),  "E.Time.Remaining ", (Nsplits-i) * round(t.e - t.beg, digits = 1)  ))
+    if(verbose) print(paste("------time elapsed in split ", i , "of", Nsplits, " = ", round(t.e - t.beg, digits = 1)))  
+    if(verbose) print(paste("------Estimated total time ",  Nsplits * round(t.e - t.beg, digits = 1),  "E.Time.Remaining ", (Nsplits-i) * round(t.e - t.beg, digits = 1)  ))
   }
   t.end <- Sys.time()
   print(paste("total time elapsed -----  ", round(t.end - t.begin, digits = 1)) )  
@@ -680,7 +681,6 @@ asDate <- function(x) {
   
   return ( as.Date(x, origin="1970-01-01"))
 }
-
 
 #' Numeric to percent with percent symbols for labelling 
 #' 

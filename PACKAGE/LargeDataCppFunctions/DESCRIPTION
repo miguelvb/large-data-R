@@ -1,0 +1,11 @@
+Package: LargeDataCppFunctions
+Type: Package
+Title: Cpp Functions used in package LargeData
+Version: 0.1
+Date: 2013-09-16
+Author: Miguel Vazquez-Prada
+Maintainer:  Miguel Vazquez-Prada <miguelvb@yahoo.com>
+Description: Efficient Rcpp used in LargeData package
+License: MIT
+Depends: Rcpp (>= 0.10.4)
+LinkingTo: Rcpp

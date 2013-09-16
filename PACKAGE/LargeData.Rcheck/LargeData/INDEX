@@ -1,0 +1,42 @@
+appendffdf              Append two ffdf by chunks
+applyffdfchunks         Apply a function over a ffdf, in chunks (number
+                        of rows)
+applyffdfsplit          Apply a function over a ffdf, in splits.
+asDate                  Integer to date with no need of specifying the
+                        origin.
+asDate2                 Integer to date with no need of specifying the
+                        origin.
+cbindffdf               Column bind two ffdf data bases.
+changedanishletters     Substitute danish letters
+ffdfsplit               A simple modification of ffdfdply from ffbase
+                        package.
+fill.data.frame         Fill a data.frame with characters to get a
+                        fixed character length for all the items.
+fill.data.frame.all.same
+                        Fill a data.frame with characters to get a
+                        fixed width for all the items.
+fill.vec                Fill a vector with characters to get a fixed
+                        character length for all the items.
+fill.vec.all.same       Fill a vector with characters to get a fixed
+                        width for all the items.
+fumerge                 Merge two data bases (ffdf)
+indexffdf               Index a ffdf by an index vector idx (re-order
+                        or subsetting)
+indexffdfsplit          Index a ffdf by an index vector idx (re-order
+                        or subsetting)
+isorderedbyrowcol       Find if a ffdf column is as 1:N (ordered "row
+                        numbers")
+lagpad                  Lag a vector by 1 position, with value NA .
+mergeby                 Merge by two ffdf by chunks
+orderffdf               Order a ffdf, in splits to avoid memory
+                        problems.
+qn                      Quote a "list" of names :
+quotenames              Quote a "list" of names :
+redirffdf               Redirecting a moved ffdf
+redirffdfffdfsave       Redirecting a moved ffdf
+saveffdf                Simpler ffdfsave
+splitapplycpp           A split-apply-combine over and ORDERED ffdf
+                        data.base.
+subsetffdf              Subset a ffdf, with splits and conditions.
+txt.perc                Numeric to percent with percent symbols for
+                        labelling

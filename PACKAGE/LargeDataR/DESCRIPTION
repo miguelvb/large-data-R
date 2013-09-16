@@ -4,8 +4,14 @@ Description: functions for Large Data sets
 Version: 0.0.1
 Author: Miguel Vazquez-Prada  <miguel@yahoo.com>
 Maintainer: Miguel Vazquez-Prada <miguel@yahoo.com>
-Depends: R (>= 2.15.2), ffbase, data.table, Rcpp
+Depends:
+    R (>= 2.15.2),
+    ffbase,
+    data.table,
+    Rcpp,
+    LargeDataCppFunctions
 License: MIT
 LazyData: true
-Collate: 'functions.r'
+Collate:
+    'functions.r'
 Packaged: 2013-09-13 10:44:29 UTC; grb615

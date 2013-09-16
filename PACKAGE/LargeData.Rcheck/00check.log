@@ -1,0 +1,141 @@
+* using log directory 'C:/Users/jkc261/large-data-R/PACKAGE/LargeData.Rcheck'
+* using R version 3.0.1 (2013-05-16)
+* using platform: i386-w64-mingw32 (32-bit)
+* using session charset: ISO8859-1
+* checking for file 'LargeData/DESCRIPTION' ... OK
+* this is package 'LargeData' version '0.0.1'
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking whether package 'LargeData' can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... WARNING
+Found the following file with non-ASCII characters:
+  functions.r
+Portable packages must use only ASCII characters in their R code,
+except perhaps in comments.
+Use \uxxxx escapes for other characters.
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking for unstated dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... NOTE
+Foreign function call with 'PACKAGE' argument in a different package:
+  .C("grouprunningcumsum", ..., PACKAGE = "ffbase")
+See the chapter 'System and foreign language interfaces' of the
+'Writing R Extensions' manual.
+* checking R code for possible problems ... NOTE
+saveffdf: warning in ffdfsave(..., file =
+  all.names(substitute(...))[[1]]): partial argument match of 'file' to
+  'filename'
+ffdfgetcolumnwise : listtodf: no visible global function definition for
+  'seqlen'
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... WARNING
+Functions or methods with usage in documentation object 'asDate2' but not in code:
+  asDate2
+
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in documentation object 'appendffdf'
+  'x' 'y' 'chunks'
+
+Undocumented arguments in documentation object 'applyffdfsplit'
+  'nsplits'
+Documented arguments not in \usage in documentation object 'applyffdfsplit':
+  'splits'
+
+Undocumented arguments in documentation object 'asDate'
+  'x'
+
+Undocumented arguments in documentation object 'asDate2'
+  'x'
+
+Undocumented arguments in documentation object 'cbindffdf'
+  'x' 'y'
+
+Undocumented arguments in documentation object 'changedanishletters'
+  'y'
+
+Undocumented arguments in documentation object 'ffdfsplit'
+  'x' 'split' 'FUN' 'BATCHBYTES' 'RECORDBYTES' 'trace' '...'
+
+Undocumented arguments in documentation object 'fill.data.frame'
+  'fill.char'
+
+Undocumented arguments in documentation object 'fill.data.frame.all.same'
+  'fill.char'
+
+Undocumented arguments in documentation object 'fumerge'
+  'x' 'y'
+
+Undocumented arguments in documentation object 'indexffdf'
+  'xwe34574'
+Documented arguments not in \usage in documentation object 'indexffdf':
+  'x'
+
+Undocumented arguments in documentation object 'indexffdfsplit'
+  'datainput' 'nsplits'
+Documented arguments not in \usage in documentation object 'indexffdfsplit':
+  'nsplits:' 'x'
+
+Undocumented arguments in documentation object 'lagpad'
+  'x'
+
+Undocumented arguments in documentation object 'mergeby'
+  'chk'
+Documented arguments not in \usage in documentation object 'mergeby':
+  'chk:'
+
+Undocumented arguments in documentation object 'qn'
+  '...'
+
+Undocumented arguments in documentation object 'quotenames'
+  '...'
+
+Undocumented arguments in documentation object 'saveffdf'
+  '...'
+
+Undocumented arguments in documentation object 'txt.perc'
+  'x' 'dec'
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See the chapter 'Writing R documentation files' in the 'Writing R
+Extensions' manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... ERROR
+Running examples in 'LargeData-Ex.R' failed
+The error most likely occurred in:
+
+> ### Name: txt.perc
+> ### Title: Numeric to percent with percent symbols for labelling
+> ### Aliases: txt.perc
+> 
+> ### ** Examples
+> 
+> pp <- c(23.121 , 1.34, 0.345);
+> fpp <- txt.perc(pp,2); fpp
+[1] "23.12%" " 1.34%" " 0.34%"
+> fpp <- txt.perc(pp,1); fpps
+Error: object 'fpps' not found
+Execution halted

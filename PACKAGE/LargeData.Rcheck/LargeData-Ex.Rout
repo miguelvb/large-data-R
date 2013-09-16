@@ -1,0 +1,106 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "LargeData"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> library('LargeData')
+Loading required package: ffbase
+Loading required package: ff
+Loading required package: tools
+Loading required package: bit
+Attaching package bit
+package:bit (c) 2008-2012 Jens Oehlschlaegel (GPL-2)
+creators: bit bitwhich
+coercion: as.logical as.integer as.bit as.bitwhich which
+operator: ! & | xor != ==
+querying: print length any all min max range sum summary
+bit access: length<- [ [<- [[ [[<-
+for more help type ?bit
+
+Attaching package: 'bit'
+
+The following object is masked from 'package:base':
+
+    xor
+
+Attaching package ff
+- getOption("fftempdir")=="C:/Users/jkc261/Documents/Projects/Screening/THIRD_PASS/TMP/RtmpkXBjDg"
+
+- getOption("ffextension")=="ff"
+
+- getOption("ffdrop")==TRUE
+
+- getOption("fffinonexit")==TRUE
+
+- getOption("ffpagesize")==65536
+
+- getOption("ffcaching")=="mmnoflush"  -- consider "ffeachflush" if your system stalls on large writes
+
+- getOption("ffbatchbytes")==16095641.6 -- consider a different value for tuning your system
+
+- getOption("ffmaxbytes")==804782080 -- consider a different value for tuning your system
+
+
+Attaching package: 'ff'
+
+The following object is masked from 'package:utils':
+
+    write.csv, write.csv2
+
+The following object is masked from 'package:base':
+
+    is.factor, is.ordered
+
+
+Attaching package: 'ffbase'
+
+The following object is masked from 'package:base':
+
+    %in%
+
+Loading required package: data.table
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:bit':
+
+    setattr
+
+Loading required package: Rcpp
+Loading required package: LargeDataCppFunctions
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("txt.perc")
+> ### * txt.perc
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: txt.perc
+> ### Title: Numeric to percent with percent symbols for labelling
+> ### Aliases: txt.perc
+> 
+> ### ** Examples
+> 
+> pp <- c(23.121 , 1.34, 0.345);
+> fpp <- txt.perc(pp,2); fpp
+[1] "23.12%" " 1.34%" " 0.34%"
+> fpp <- txt.perc(pp,1); fpps
+Error: object 'fpps' not found
+Execution halted

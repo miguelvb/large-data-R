@@ -1,10 +1,10 @@
 {
-    "contents" : "\ndf <- ffdf(x=ff(1:1e6), y = ff(factor(sample(letters[1:10],1e6,replace=T))))\nlibrary(LargeData)\n\nfu <- function(x){ data.frame(xi = mean(x$x))}\nres <- splitapplycpp(df,df$y,1e5,fu)",
+    "contents" : "library(LargeData)\ndir <- \"C:/Users/jkc261/Documents/Projects/R/tmp\"\n#dir.create(dir)\nsetwd(dir)\n\ndf <- as.ffdf(cars)\ndf[1,]\ndf <- orderffdf(df,\"speed\")\nfu <- function(x){ data.frame(speed = x$speed[1], mean = round( mean(x$dist) , digits = 2))}\n\nres <- splitapplycpp(df,df$speed,1e1,fu, F)\nres[,]\n\nlibrary(LargeDataCppFunctions)",
     "created" : 1379070015376.000,
     "dirty" : true,
     "encoding" : "",
     "folds" : "",
-    "hash" : "11938673",
+    "hash" : "1293677130",
     "id" : "40A32C9E",
     "lastKnownWriteTime" : 1379069069,
     "path" : null,

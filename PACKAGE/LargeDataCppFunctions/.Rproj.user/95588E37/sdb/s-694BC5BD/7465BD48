@@ -1,0 +1,15 @@
+{
+    "contents" : "Package: LargeDataCppFunctions\nType: Package\nTitle: Cpp Functions used in package LargeData\nVersion: 0.1\nDate: 2013-09-16\nAuthor: Miguel Vazquez-Prada\nMaintainer:  Miguel Vazquez-Prada <miguelvb@yahoo.com>\nDescription: Efficient Rcpp used in LargeData package\nLicense: MIT\nDepends: Rcpp (>= 0.10.4)\nLinkingTo: Rcpp\n",
+    "created" : 1379332210159.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4228774306",
+    "id" : "7465BD48",
+    "lastKnownWriteTime" : 1379331900,
+    "path" : "C:/Users/jkc261/large-data-R/PACKAGE/LargeDataCppFunctions/DESCRIPTION",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "dcf"
+}
