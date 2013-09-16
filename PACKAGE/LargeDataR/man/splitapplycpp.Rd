@@ -2,7 +2,8 @@
 \alias{splitapplycpp}
 \title{A split-apply-combine over and ORDERED ffdf data.base.}
 \usage{
-  splitapplycpp(inputdata, splitvector, chksize, fu)
+  splitapplycpp(inputdata, splitvector, chksize, fu,
+    verbose = T)
 }
 \arguments{
   \item{inputdata}{: the input ffdf. It MUST BE ORDERED by
@@ -16,6 +17,8 @@
 
   \item{fu}{: a function that returns a data.frame over a
   data.frame (for a single value of the split vector)}
+
+  \item{verbose}{: will verbose the process}
 }
 \description{
   split apply over an ORDERED data frame (or ffdf), using
